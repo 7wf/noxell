@@ -12,6 +12,7 @@ fn main() {
         }
 
         let (command_name, command_arguments) = commander::parse_command_request(&input);
+        let command_arguments: Vec<&str> = command_arguments.collect();
 
         match command_name {
             "exit" => return,

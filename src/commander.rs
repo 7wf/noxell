@@ -14,7 +14,7 @@ pub fn parse_command_request<'a>(input: &'a String) -> (&str, SplitWhitespace<'_
 /**
  * Runs a command from the command name and the arguments.
  */
-pub fn run_command(command_name: &str, command_arguments: SplitWhitespace<'_>) {
+pub fn run_command(command_name: &str, command_arguments: Vec<&str>) {
     let command_name = command_name.to_owned();
     let mut command = create_command(&command_name, command_arguments);
 
@@ -30,7 +30,7 @@ pub fn run_command(command_name: &str, command_arguments: SplitWhitespace<'_>) {
 /**
  * Creates a command from a executable name and the provided arguments.
  */
-fn create_command(executable: &String, arguments: SplitWhitespace<'_>) -> Command {
+fn create_command(executable: &String, arguments: Vec<&str>) -> Command {
     let mut command = Command::new(&executable);
     command.args(arguments);
 
