@@ -2,6 +2,7 @@
 extern crate colour;
 
 mod commander;
+mod commands;
 mod ui;
 
 fn main() {
@@ -16,7 +17,10 @@ fn main() {
 
         match command_name {
             "exit" => return,
-            "cd" => unimplemented!(),
+            "cd" => match commands::change_directory::execute(command_arguments) {
+                Ok(_) => continue,
+                Err(error) => eprintln!("{}", error),
+            },
             command_name => commander::run_command(command_name, command_arguments),
         }
     }
