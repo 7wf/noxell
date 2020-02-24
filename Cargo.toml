@@ -1,0 +1,8 @@
+[package]
+name = "noxell"
+version = "0.0.1"
+authors = ["7wf <7ywolf@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+colour = "0.3.0"
