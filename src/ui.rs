@@ -1,15 +1,23 @@
 use std::io::{self, Write};
+use std::path::Path;
 use std::env;
+
+/**
+ * Returns the directory of a path.
+ */
+fn get_directory(path: &Path) -> &str {
+    match &path.file_name() {
+        None => "/",
+        Some(directory) => directory.to_str().unwrap(),
+    }
+}
 
 /**
  * Prints the λoxell delimiter.
  */
 fn print_delimiter() {
     let directory = env::current_dir().expect("Cannot get current directory.");
-    let directory = match directory.file_name() {
-        None => "/",
-        Some(path) => path.to_str().unwrap(),
-    };
+    let directory = get_directory(&directory);
 
     yellow!("{} ", directory);
     cyan!("λ ");
