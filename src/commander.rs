@@ -4,7 +4,7 @@ use std::str::SplitWhitespace;
 /**
  * Parses a command request.
  */
-pub fn parse_command_request<'a>(input: &'a String) -> (&str, SplitWhitespace<'_>) {
+pub fn parse_command_request<'a>(input: &'a str) -> (&str, SplitWhitespace<'_>) {
     let mut arguments = input.split_whitespace();
     let command = &arguments.next().unwrap();
 
